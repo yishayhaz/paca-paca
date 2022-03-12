@@ -10,39 +10,40 @@ let pacaPacaJson = await fetch('https://pacapaca-api.herokuapp.com', {
   headers: {
     "Content-Type": "application/json"
   },
-  body: JSON.stringify({ 
-    data: {
-      name: "",
-      age: 120,
-      nation: ["US", "IL", "RU"],
-      isLoggedIn: true,
-      createdAt: "date"
-    }, repeat: 3 // self explanatory
+  body: JSON.stringify({
+    "data": {
+        "name": "Superman Cohen",
+        "age": 120,
+        "nation": ["US", "IL", "RU"],
+        "isLoggedIn": true,
+        "createdAt": "date"
+    },
+    "repeat": 3
   })
 }).then(res => res.json());
 
 // Will return something like:
 pacaPacaJson = [
     {
-        "name": "qmjfdvyltx",
-        "age": 98,
-        "nation": "US",
-        "isLoggedIn": false,
-        "createdAt": "2023-09-18T23:40:52.189Z"
-    },
-    {
-        "name": "fyzavtdbvl",
-        "age": 25,
+        "name": "Qaeebxvt Sttmk",
+        "age": 28,
         "nation": "RU",
         "isLoggedIn": false,
-        "createdAt": "2042-11-29T18:44:38.667Z"
+        "createdAt": "1988-04-13T09:18:40.178Z"
     },
     {
-        "name": "kvovguhdxg",
-        "age": 83,
+        "name": "Bezhwiun Ubdon",
+        "age": 47,
         "nation": "IL",
-        "isLoggedIn": true,
-        "createdAt": "2049-07-18T04:25:10.041Z"
+        "isLoggedIn": false,
+        "createdAt": "2012-01-24T16:36:31.588Z"
+    },
+    {
+        "name": "Fkqjslxq Wuedw",
+        "age": 76,
+        "nation": "USA",
+        "isLoggedIn": false,
+        "createdAt": "2030-09-22T04:32:27.470Z"
     }
 ]
 ```
