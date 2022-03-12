@@ -60,7 +60,7 @@ let data = {
 }
 ```
 
-## Date
+#### Date
 ```js
 let data = {
   createdAt: "date",           // Will return random date between 1970-2050
