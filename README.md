@@ -55,7 +55,7 @@ Now let's see what out options are:
 let data = {
   nation: "",                // Will return random STRING, 10 chars long
   nation: "3",               // Will return random STRING, 3 chars long
-  nation: ['US', 'IL', 'RU'] // Will return 'US', 'IL', or 'RU'
+  nation: ['US', 'IL', 'RU'], // Will return 'US', 'IL', or 'RU'
   nation: "Usa California"   // Will return random chars but with the same structre (spaces, uppercase letters) for example -> "Khi Tisjdefks"
 }
 ```
