@@ -62,4 +62,4 @@ const generateArr = data => {
   for(var i = 0; i < len; i++) res.push(generateStr(5));
   return res;
 }
-app.listen(3000)
+app.listen(process.env.PORT || 3000, () => console.log('Server started'));
