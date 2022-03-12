@@ -5,7 +5,7 @@ It is a simple API, you send how you would like your fake data to look like, the
 ### Useage
 
 ```js
-let pacaPacaJson = await fetch('paca-paca.com/', {
+let pacaPacaJson = await fetch('https://pacapaca-api.herokuapp.com', {
   method: 'POST',
   headers: {
     "Content-Type": "application/json"
