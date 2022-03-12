@@ -23,7 +23,13 @@ function changeData(data){
       res[key] = changeData(data[key]);
     } else {
       if(typeof data[key] == "string"){
-        res[key] = data[key].startsWith("date") ? generateDate(data[key]) : +data[key] ? generateStr(+data[key]) : generateStr(data[key].length);
+        if(data[key].startsWith("date")){
+          res[key] = generateDate(data[key]);
+        } else if(+data[key]) {
+          res[key] = generateNum(+data[key]);
+        } else {
+          res[key] = generateStr(data[key]);
+        }
       } else if(typeof data[key] == 'number') {
         res[key] = generateNum(data[key]);
       } else if(typeof data[key] == 'boolean') {
@@ -43,8 +49,19 @@ const generateStr = (len) => {
   len = len ? len : 10;
   let res = "";
   let chars = 'abcdefghijklmnopqrstuvwxyz';
-  for(let i = 0; i < len; i++){
-    res += chars[Math.floor(Math.random() * chars.length)];
+  let exact = typeof len == 'string';
+
+  if(!exact){
+    for(let i = 0; i < len; i++) res += chars[Math.floor(Math.random() * chars.length)];
+  } else {
+    for(var i = 0; i < len.length; i++){
+      if(len[i] === ' '){
+        res += ' ';
+      } else {
+        let randomChar = chars[Math.floor(Math.random() * chars.length)];
+        res += len[i].toUpperCase() !== len[i] ? randomChar : randomChar.toUpperCase();
+      }
+    }
   }
   return res;
 }
