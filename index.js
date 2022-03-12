@@ -6,10 +6,14 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/', (req, res) => {
-  let data = req.body.data;
   let response = [];
-  let repeat = +req.body.repeat || 10;
-  for(var i = 0; i < +repeat; i++) response.push(changeData(data));
+  try{
+    let data = req.body.data;
+    let repeat = +req.body.repeat || 10;
+    for(var i = 0; i < +repeat; i++) response.push(changeData(data));
+  } catch {
+    response = {error: "Invalid data"};
+  }
   return res.send(response)
 })
 function changeData(data){
@@ -35,7 +39,8 @@ function changeData(data){
   });
   return res;
 }
-const generateStr = (len=10) => {
+const generateStr = (len) => {
+  len = len ? len : 10;
   let res = "";
   let chars = 'abcdefghijklmnopqrstuvwxyz';
   for(let i = 0; i < len; i++){
