@@ -1,6 +1,6 @@
 # PACA-PACA.JSON
 
-It is a simple API, you send how you would like your fake data to look like, the API sends it back to you.
+The idea is very simple, you send and example of your data structre and you get back the exact same structre but with diffrend data
 
 ### Useage
 
