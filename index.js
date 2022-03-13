@@ -67,9 +67,11 @@ const exactBody = string => {
       res += ' ';
     } else if(+string[i]){
       res += Math.floor(Math.random() * 10);
-    } else{
+    } else if(chars.includes(string[i].toLowerCase())){
       let randomChar = chars[Math.floor(Math.random() * chars.length)];
       res += string[i].toUpperCase() !== string[i] ? randomChar : randomChar.toUpperCase();
+    } else {
+      res += string[i];
     }
   }
   return res;
@@ -84,7 +86,7 @@ const generateBool = () => Boolean(Math.floor(Math.random()*2))
 
 const generateArr = data => {
   let res = [];
-  let len = +data[0] || +data[1] || 10;
+  let len = typeof data[0] === 'number' ? +data[0] : +data[1] || 10;
   for(var i = 0; i < len; i++){
     if(typeof data[0] === 'string'){
       res.push(exactBody(data[0]));
