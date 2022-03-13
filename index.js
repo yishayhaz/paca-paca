@@ -35,32 +35,41 @@ function changeData(data){
       } else if(typeof data[key] == 'boolean') {
         res[key] = generateBool();
       } else if(typeof data[key] == 'object') {
-        if(data[key].length > 1){
-          res[key] = data[key][Math.floor(Math.random()*data[key].length)];
+        if(data[key].length >= 2 && data[key][0] === "$random"){
+          res[key] = pickRandom(data[key].slice(1));
         } else {
-          res[key] = generateArr(data[key][0]);
+          res[key] = generateArr(data[key]);
         }
       }
     }
   });
   return res;
 }
+
+const chars = 'abcdefghijklmnopqrstuvwxyz';
+
 const generateStr = (len) => {
   len = len ? len : 10;
   let res = "";
-  let chars = 'abcdefghijklmnopqrstuvwxyz';
   let exact = typeof len == 'string';
 
   if(!exact){
     for(let i = 0; i < len; i++) res += chars[Math.floor(Math.random() * chars.length)];
   } else {
-    for(var i = 0; i < len.length; i++){
-      if(len[i] === ' '){
-        res += ' ';
-      } else {
-        let randomChar = chars[Math.floor(Math.random() * chars.length)];
-        res += len[i].toUpperCase() !== len[i] ? randomChar : randomChar.toUpperCase();
-      }
+    res = exactBody(len);
+  }
+  return res;
+}
+const exactBody = string => {
+  let res = '';
+  for(var i = 0; i < string.length; i++){
+    if(string[i] === ' '){
+      res += ' ';
+    } else if(+string[i]){
+      res += Math.floor(Math.random() * 10);
+    } else{
+      let randomChar = chars[Math.floor(Math.random() * chars.length)];
+      res += string[i].toUpperCase() !== string[i] ? randomChar : randomChar.toUpperCase();
     }
   }
   return res;
@@ -75,8 +84,13 @@ const generateBool = () => Boolean(Math.floor(Math.random()*2))
 
 const generateArr = data => {
   let res = [];
-  let len = +data ? +data : 5;
-  for(var i = 0; i < len; i++) res.push(generateStr(5));
+  let len = +data[0] || +data[1] || 10;
+  for(var i = 0; i < len; i++){
+    if(typeof data[0] === 'string'){
+      res.push(exactBody(data[0]));
+    } else res.push(generateStr(5));
+  }
   return res;
 }
+const pickRandom = arr => arr[Math.floor(Math.random() * arr.length)];
 app.listen(process.env.PORT || 3000, () => console.log('Server started'));
