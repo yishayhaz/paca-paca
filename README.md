@@ -14,7 +14,7 @@ let pacaPacaJson = await fetch('https://pacapaca-api.herokuapp.com', {
     "data": {
         "name": "Superman Cohen",
         "age": 120,
-        "nation": ["US", "IL", "RU"],
+        "nation": ["$random", "US", "IL", "RU"],
         "isLoggedIn": true,
         "createdAt": "date"
     },
