@@ -87,10 +87,20 @@ const generateBool = () => Boolean(Math.floor(Math.random()*2))
 const generateArr = data => {
   let res = [];
   let len = typeof data[0] === 'number' ? +data[0] : +data[1] || 10;
-  for(var i = 0; i < len; i++){
-    if(typeof data[0] === 'string'){
-      res.push(exactBody(data[0]));
-    } else res.push(generateStr(5));
+  if(typeof data[0] === 'object'){
+    if(JSON.stringify(data[0])[0] === "["){
+      for(var i = 0; i < len; i++){
+        res.push([generateArr(data[0])]);
+      }
+    } else {
+      for(var i = 0; i < len; i++) res.push(changeData(data[0]));
+    }
+  } else {
+    for(var i = 0; i < len; i++){
+      if(typeof data[0] === 'string'){
+        res.push(exactBody(data[0]));
+      } else res.push(generateStr(5));
+    }
   }
   return res;
 }
