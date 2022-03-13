@@ -55,8 +55,8 @@ Now let's see what out options are:
 let data = {
   nation: "",                // Will return random STRING, 10 chars long
   nation: "3",               // Will return random STRING, 3 chars long
-  nation: ['US', 'IL', 'RU'], // Will return 'US', 'IL', or 'RU'
-  nation: "Usa California"   // Will return random chars but with the same structre (spaces, uppercase letters) for example -> "Khi Tisjdefks"
+  nation: ['$random', 'US', 'IL', 'RU'], // Will return 'US', 'IL', or 'RU'
+  nation: "Usa California",   // Will return random chars but with the same structre (spaces, uppercase letters) for example -> "Khi Tisjdefks"
 }
 ```
 
@@ -80,7 +80,9 @@ let data = {
 ```js
 let data = {
   hobbies: [],   // Will return something like: ["xlncx", "flqwt", "lxfbv", "iwcak", "ytxja"]
-  hobbies: [10], // The 10 sets the length of the wanted Array
+  hobbies: [10], // same as above, but n=10
+  hobbies: ["10"] // random two digit numbers
+  hobbies: ["User#123", 3] // Will return something like: ["Jdse#893", "Kdse#329", "Isec#439"], 3 is optional, default n=10
 }
 ```
 #### Boolean
