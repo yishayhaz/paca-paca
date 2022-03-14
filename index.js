@@ -49,7 +49,7 @@ function changeData(data){
 const chars = 'abcdefghijklmnopqrstuvwxyz';
 
 const generateStr = (len) => {
-  len = len ? len : 10;
+  len = len || 10;
   let res = "";
   let exact = typeof len == 'string';
 
@@ -76,10 +76,9 @@ const exactBody = string => {
   }
   return res;
 }
-const generateNum = num => {
-  num = num ? num : 100;
-  return Math.floor(Math.random() * num);
-}
+
+const generateNum = num => Math.floor(Math.random() * (num || 100));
+
 const generateDate = dateStr => eval(`new Date(Math.floor(Math.random() * 2550000000000)).${dateStr.slice(5) || "toISOString()"}`);
 
 const generateBool = () => Boolean(Math.floor(Math.random()*2))
@@ -104,5 +103,7 @@ const generateArr = data => {
   }
   return res;
 }
+
 const pickRandom = arr => arr[Math.floor(Math.random() * arr.length)];
+
 app.listen(process.env.PORT || 3000, () => console.log('Server started'));
