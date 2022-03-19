@@ -81,8 +81,8 @@ let data = {
 let data = {
   hobbies: [],   // Will return something like: ["xlncx", "flqwt", "lxfbv", "iwcak", "ytxja"]
   hobbies: [10], // same as above, but n=10
-  hobbies: ["10"] // random two digit numbers
-  hobbies: ["User#123", 3] // Will return something like: ["Jdse#893", "Kdse#329", "Isec#439"], 3 is optional, default n=10
+  hobbies: ["10"], // random two digit numbers
+  hobbies: ["User#123", 3], // Will return something like: ["Jdse#893", "Kdse#329", "Isec#439"], 3 is optional, default n=10
   hobbies: [{"name": ["$random", "football", "chess", "vide games"]}, 3] // Will return [{"name": "vide games"},{"name": "chess"},{"name": "vide games"}]}
 ```
 #### Boolean
