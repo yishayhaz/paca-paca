@@ -48,7 +48,7 @@ pacaPacaJson = [
 ]
 ```
 
-Now let's see what out options are:
+Now let's see our options:
 
 #### String:
 ```js
