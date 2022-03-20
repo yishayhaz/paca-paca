@@ -26,7 +26,7 @@ function changeData(data){
         if(data[key].startsWith("date")){
           res[key] = generateDate(data[key]);
         } else if(+data[key]) {
-          res[key] = generateNum(+data[key]);
+          res[key] = generateStr(+data[key]);
         } else {
           res[key] = generateStr(data[key]);
         }
