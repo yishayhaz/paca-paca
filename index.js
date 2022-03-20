@@ -4,7 +4,9 @@ const cors = require('cors');
 
 app.use(cors());
 app.use(express.json());
-
+app.get('/', (req, res) => {
+  res.send("No no no, you should call a POST request!")
+})
 app.post('/', (req, res) => {
   let response = [];
   try{
