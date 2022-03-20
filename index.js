@@ -4,9 +4,7 @@ const cors = require('cors');
 
 app.use(cors());
 app.use(express.json());
-app.get('/', (req, res) => {
-  res.send("No no no, you should call a POST request!")
-})
+
 app.post('/', (req, res) => {
   let response = [];
   try{
@@ -28,7 +26,11 @@ function changeData(data){
         if(data[key].startsWith("date")){
           res[key] = generateDate(data[key]);
         } else if(+data[key]) {
-          res[key] = generateStr(+data[key]);
+          if(+data[key] <= 100) {
+            res[key] = generateStr(+data[key]);
+          } else {
+            res[key] = exactBody(data[key]);
+          }
         } else {
           res[key] = generateStr(data[key]);
         }
@@ -108,4 +110,4 @@ const generateArr = data => {
 
 const pickRandom = arr => arr[Math.floor(Math.random() * arr.length)];
 
-app.listen(process.env.PORT || 3000, () => console.log('Server started'));
+app.listen(process.env.PORT || 5000, () => console.log('Server started'));
