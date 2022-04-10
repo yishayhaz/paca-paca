@@ -1,8 +1,8 @@
 # PACA-PACA.JSON
 
-The idea is very simple, you send and example of your data structre and you get back the exact same structre but with diffrend data
+The idea is very simple, you send and example of your data structure and you get back the exact same structure but with different data
 
-### Useage
+### Usage
 
 ```js
 let pacaPacaJson = await fetch('https://pacapaca-api.herokuapp.com', {
